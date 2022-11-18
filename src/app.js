@@ -1,9 +1,15 @@
 import {BrowserRouter, Routes, Route} from "react-router-dom";
 import { Menu, NewExit, NewEntry, Registration, Login } from "./pages"
 import { GlobalStyle } from "./assets/globalStyle";
+import Context from "./assets/Context";
+import { useState } from "react";
 export default function App(){
+    const [email, setEmail] = useState("");
+    const [token, setToken] = useState("");
+    const contextExport = {email, setEmail,token,setToken}
     return(
         <>
+        <Context.Provider value={contextExport}>
         <BrowserRouter >
         <GlobalStyle />
         <Routes>
@@ -15,6 +21,7 @@ export default function App(){
 
         </Routes>
         </BrowserRouter>
+        </Context.Provider>
         </>
     )
 }

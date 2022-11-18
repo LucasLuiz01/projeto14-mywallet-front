@@ -3,11 +3,38 @@ import { Column, Padding } from "../../components";
 import { IoExitOutline } from "react-icons/io5";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import {Link} from "react-router-dom"
+import { useEffect, useContext, useState } from "react";
+import Context from "../../assets/Context";
+import axios from "axios";
 export default function Menu() {
+  const {token} = useContext(Context);
+  const {setEmail} = useContext(Context);
+  const [dados, setDados ]= useState("");
+  useEffect(()=> {
+    const promisse = axios.get("http://localhost:5000/cadastro", {
+      headers:{
+        authorization:
+        `Bearer ${token}`,
+      }
+    })
+    promisse.then((usuario)=>{
+      setDados(usuario.data);
+      const cicloDeVida = usuario.data.email;
+      setEmail(cicloDeVida);
+    })
+    promisse.catch((err)=>{
+      console.log(err);
+    })
+    
+  }, [])
+
+  if(!dados){
+    return(<></>)
+  }
   return (
     <Column>
       <StyledTop>
-        <StyledSpan>Olá, fulano</StyledSpan>
+        <StyledSpan>Olá, {dados.nome}</StyledSpan>
         <Link to="/">
         <IoExitOutline size={23} color="#FFFFFF" />
         </Link>
@@ -33,6 +60,7 @@ export default function Menu() {
     </Column>
   );
 }
+
 const StyledTop = styled.div`
   width: 85%;
   height: 78px;
