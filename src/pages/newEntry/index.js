@@ -14,7 +14,7 @@ export default function NewEntry() {
         e.preventDefault();
         const promisse = axios.post("http://localhost:5000/wallet", {
             valor,
-            tipo: "entrada",
+            tipo: true,
             description,
             email
         });

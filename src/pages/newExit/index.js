@@ -13,7 +13,7 @@ export default function NewExit() {
         e.preventDefault();
         const promisse = axios.post("http://localhost:5000/wallet", {
             valor,
-            tipo: "saida",
+            tipo: false,
             description,
             email
         });
