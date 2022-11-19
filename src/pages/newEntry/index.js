@@ -23,6 +23,7 @@ export default function NewEntry() {
         })
         promisse.catch((err) =>{
             console.log(err);
+            alert(err.response.data);
         })
     }
 return(

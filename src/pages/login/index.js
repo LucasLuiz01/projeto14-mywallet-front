@@ -24,7 +24,7 @@ export default function Login() {
         })
         promisse.catch((eroo) =>{
             console.log(eroo);
-            alert("Dados inválidos")
+            alert("Dados inválidos");
         })
     }
 return(

@@ -82,7 +82,7 @@ export default function Menu() {
          ) })}
          <StyledTotal>
             <StyledSaldo>Saldo</StyledSaldo>
-            <StyledValores color={cor}>{soma}</StyledValores>
+            <StyledValores color={cor}>{soma.toFixed(2)}</StyledValores>
          </StyledTotal>
         </StyledMov>
         <Padding size={"13"} />

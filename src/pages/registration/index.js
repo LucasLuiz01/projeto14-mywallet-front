@@ -24,6 +24,7 @@ export default function Registration() {
         })
         promisse.catch((err) => {
             console.log(err.response.data);
+            alert(err.response.data);
         })
     }
 return(

@@ -22,6 +22,7 @@ export default function NewExit() {
         })
         promisse.catch((err) =>{
             console.log(err);
+            alert(err.response.data);
         })
     }
 return(
