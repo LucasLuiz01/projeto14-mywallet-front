@@ -11,6 +11,8 @@ export default function Menu() {
   const { setEmail } = useContext(Context);
   const [dados, setDados] = useState("");
   const [mov, setMov] = useState("");
+  let soma = 0;
+  let cor = "#03AC00";
  
   useEffect(() => {
     const promisse = axios.get("http://localhost:5000/cadastro", {
@@ -45,8 +47,18 @@ export default function Menu() {
     return <></>;
   }
   if (mov.length !== 0) {
-    let number = 34;
-    let arredondado = number.toFixed(2);
+    for(let i = 0; i < mov.length; i++){
+      let numero = mov[i].valor;
+      let sinal = mov[i].tipo;
+      if(sinal === true){
+        soma = soma + Number(numero);
+      }else{
+        soma = soma - Number(numero);
+      }
+    }
+    if(soma < 0){
+      cor = "#C70000";
+    }
     return (
       <Column>
         <StyledTop>
@@ -68,6 +80,10 @@ export default function Menu() {
               <StyledValor tipos={info.tipo} >{Number(info.valor).toFixed(2)}</StyledValor>
               </StyledContainer>
          ) })}
+         <StyledTotal>
+            <StyledSaldo>Saldo</StyledSaldo>
+            <StyledValores color={cor}>{soma}</StyledValores>
+         </StyledTotal>
         </StyledMov>
         <Padding size={"13"} />
         <StyledFooter>
@@ -212,4 +228,28 @@ const StyledMov = styled.div`
   background-color: #ffffff;
   border-radius: 5px;
   align-items: center;
+  position: relative;
+`;
+const StyledTotal = styled.div`
+  width: 95%;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 10px;
+  
+`;
+const StyledValores = styled.span`
+  font-family: "Raleway";
+  font-size: 18px;
+  font-weight: 400;
+  color: #000000;
+  color: ${props => props.color};
+`;
+const StyledSaldo = styled.span`
+  font-family: "Raleway";
+  font-size: 18px;
+  font-weight: 700;
+  color: #000000;
 `;
