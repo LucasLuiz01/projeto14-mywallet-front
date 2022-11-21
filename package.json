@@ -13,7 +13,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "--openssl-legacy-provider",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
