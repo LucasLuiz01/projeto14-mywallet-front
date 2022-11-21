@@ -1,7 +1,6 @@
 import { Button,Logo, Column, Input, Links, Padding } from "../../components";
 import { useState } from "react";
 import {Link, useNavigate} from "react-router-dom"
-import styled from "styled-components";
 import axios from "axios";
 export default function Registration() {
     const [password, setPassWord] = useState("");
@@ -68,8 +67,3 @@ return(
 );
 }
 
-const StyledBody = styled.input`
-width: 100%;
-height: 100%;
-background-color: #A328D6;
-`

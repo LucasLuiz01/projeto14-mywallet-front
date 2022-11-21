@@ -8,4 +8,5 @@ export const StyledLink = styled.a`
   line-height: 17px;
   text-align: center;
   color: #FFFFFF;
+  text-decoration: none;
 `;

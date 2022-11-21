@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Column, Padding } from "../../components";
-import { IoExitOutline, IoTrendingUpOutline } from "react-icons/io5";
+import { IoExitOutline } from "react-icons/io5";
 import { AiOutlinePlusCircle, AiOutlineMinusCircle } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useEffect, useContext, useState } from "react";
@@ -70,9 +70,9 @@ export default function Menu() {
         <StyledMov>
         
           {mov.map((info) => {
-             
+            
            return(
-            <StyledContainer>
+            <StyledContainer key={info.id}>
               <StyledInfos>
                 <StyledData>{info.data}</StyledData>
                 <StyledDescription>{info.description}</StyledDescription>
@@ -80,11 +80,12 @@ export default function Menu() {
               <StyledValor tipos={info.tipo} >{Number(info.valor).toFixed(2)}</StyledValor>
               </StyledContainer>
          ) })}
-         <StyledTotal>
+         
+        </StyledMov>
+        <StyledTotal>
             <StyledSaldo>Saldo</StyledSaldo>
             <StyledValores color={cor}>{soma.toFixed(2)}</StyledValores>
          </StyledTotal>
-        </StyledMov>
         <Padding size={"13"} />
         <StyledFooter>
           <StyledEntry>
@@ -226,29 +227,29 @@ const StyledMov = styled.div`
   display: flex;
   flex-direction: column;
   background-color: #ffffff;
-  border-radius: 5px;
   align-items: center;
   position: relative;
+  overflow-y: auto;
 `;
 const StyledTotal = styled.div`
-  width: 95%;
+  width: 90%;
   height: auto;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  position: absolute;
-  bottom: 10px;
-  
+  background-color: #ffffff;
 `;
 const StyledValores = styled.span`
   font-family: "Raleway";
   font-size: 18px;
   font-weight: 400;
+  padding-right: 42px;
   color: #000000;
   color: ${props => props.color};
 `;
 const StyledSaldo = styled.span`
   font-family: "Raleway";
+  padding-left: 42px;
   font-size: 18px;
   font-weight: 700;
   color: #000000;

@@ -1,7 +1,6 @@
 import { Button,Logo, Column, Input, Links, Padding } from "../../components";
 import { useContext, useState } from "react";
 import {Link} from "react-router-dom"
-import styled from "styled-components";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Context from "../../assets/Context";
@@ -55,9 +54,3 @@ return(
   </Column>
 );
 }
-
-const StyledBody = styled.input`
-width: 100%;
-height: 100%;
-background-color: #A328D6;
-`
